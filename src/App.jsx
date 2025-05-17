@@ -5,6 +5,8 @@ import axios from "axios";
 import SearchField from "./componets/SearchField";
 import CurrentWeather from "./componets/CurrentWeather";
 import Forecast from "./componets/Forecast";
+import { Box } from "@mui/material";
+
 
 const App = () => {
   const [city, setCity] = useState("");
@@ -76,23 +78,45 @@ const App = () => {
     });
     return Object.values(days).slice(0, 4);
   };
-
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h4" gutterBottom align="center">
-        Weather App
-      </Typography>
-      <SearchField
-        city={city}
-        setCity={setCity}
-        fetchWeatherByCity={fetchWeatherByCity}
-        suggestions={suggestions}
-        fetchCitySuggestions={fetchCitySuggestions}
-      />
-      {weather && <CurrentWeather weather={weather} />}
-      {forecast.length > 0 && <Forecast forecast={forecast} />}
-    </Container>
+    <Box
+      sx={{
+        height: '100vh',
+        width: '100vw',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        bgcolor: '#f0f4f8',
+      }}
+    >
+      <Container
+        maxWidth="sm"
+        sx={{
+          bgcolor: '#fff',
+          p: 4,
+          borderRadius: 2,
+          boxShadow: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Typography variant="h4" gutterBottom align="center">
+          Weather App
+        </Typography>
+        <SearchField
+          city={city}
+          setCity={setCity}
+          fetchWeatherByCity={fetchWeatherByCity}
+          suggestions={suggestions}
+          fetchCitySuggestions={fetchCitySuggestions}
+        />
+        {weather && <CurrentWeather weather={weather} />}
+        {forecast.length > 0 && <Forecast forecast={forecast} />}
+      </Container>
+    </Box>
   );
+  
 };
 
 export default App;
