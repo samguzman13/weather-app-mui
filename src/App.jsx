@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, Typography } from "@mui/material";
 import axios from "axios";
-import SearchField from "./components/SearchField";
-import CurrentWeather from "./components/CurrentWeather";
-import Forecast from "./components/Forecast";
+import SearchField from "./componets/SearchField";
+import CurrentWeather from "./componets/CurrentWeather";
+import Forecast from "./componets/Forecast";
 
 const App = () => {
   const [city, setCity] = useState("");
@@ -13,7 +13,7 @@ const App = () => {
   const [coords, setCoords] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
-  console.log("API Key:, apiKey");git
+  console.log ("API Key:", apiKey)
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
